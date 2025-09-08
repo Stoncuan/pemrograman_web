@@ -3,15 +3,25 @@ import "./assets/style/Navbar.css";
 function Navbar() {
   return (
     <>
-      <nav className="navbar">
-      <div className="title">Stoncuan</div>
-      <ul className="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+      <div style="background:yellow;padding:5px">
+        <h4 style="text-align:center">
+          Resize the browser window to see the responsive effect.
+        </h4>
+      </div>
+
+      <div class="header">
+        <h1>My Website</h1>
+        <p>
+          With a <b>flexible</b> layout.
+        </p>
+      </div>
+
+      <div class="navbar">
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+      </div>
     </>
   );
 }
