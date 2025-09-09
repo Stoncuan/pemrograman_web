@@ -1,28 +1,13 @@
-h2 {
-    font-family: 'Times New Roman', Times, serif;
-    color: #333;
-    text-align: center;
+/* Main column */
+.main {
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
 }
 
-body {
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.flex {
-  display: flex;
-  align-items: stretch;
-  background-color: #f1f1f1;
-}
-
-.flex > div {
-  background-color: DodgerBlue;
-  color: white;
-  margin: 10px;
-  padding: 100px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
 }

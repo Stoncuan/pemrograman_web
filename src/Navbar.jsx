@@ -3,20 +3,20 @@ import "./assets/style/Navbar.css";
 function Navbar() {
   return (
     <>
-      <div style="background:yellow;padding:5px">
-        <h4 style="text-align:center">
+      <div style={{ background: "yellow", padding: "5px" }}>
+        <h2 style={{ textAlign: "center" }}>
           Resize the browser window to see the responsive effect.
-        </h4>
+        </h2>
       </div>
 
-      <div class="header">
+      <div className="header">
         <h1>My Website</h1>
         <p>
           With a <b>flexible</b> layout.
         </p>
       </div>
 
-      <div class="navbar">
+      <div className="navbar">
         <a href="#">Link</a>
         <a href="#">Link</a>
         <a href="#">Link</a>

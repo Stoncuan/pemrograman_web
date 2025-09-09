@@ -1,7 +1,13 @@
 
-footer {
-  margin-top: 70vh; 
-  background-color: #0111;
+/* Footer */
+.footer {
   padding: 20px;
   text-align: center;
+  background: #ddd;
+}
+
+@media screen and (max-width: 800px) {
+  .footer h2{   
+    font-weight: 0;
+  }
 }
