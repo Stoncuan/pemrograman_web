@@ -1,13 +1,13 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-function Home () {
+function Contact () {
   return (
     <Container fluid className="p-4">
-      <h1>Home</h1>
+      <h1>Contact</h1>
       
     </Container>
   );
 };
 
-export default Home;
+export default Contact;
