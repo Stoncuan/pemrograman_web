@@ -1,4 +1,5 @@
 import "./assets/style/Footer.css";
+import './assets/style/Navbar.css';
 
 function Footer() {
   return (

@@ -6,35 +6,51 @@ import { Route, Routes } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 
 import NavbarComponent from "./NavbarComponent.jsx";
-import Home from "./Home.jsx";
-import Contact from "./Contact.jsx";
-import About from "./About.jsx";
-import Footer from "./Footer.jsx";
-import Sidebar from "./Sidebar.jsx";
 
-function App() {
-  return (
-    <>
+import DataTabel from "./Table.jsx";
+
+import React, {Component} from "react";
+
+// db
+import {API_URL} from "./utils/constant.js";
+
+// axios
+import axios from "axios";
+
+export default class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      menus: [
+
+      ],
+    }
+
+  }
+
+  componentDidMount(){
+    // tangkap data
+    axios.get(API_URL+"products")
+    .then(res => {
+      const menus = res.data;
+      this.setState({menus});
+    })
+    .catch(error => {
+      console.log("Error yaa", error);
+    })
+  }
+
+
+  render() {
+    console.log(this.state.menus);
+    return(
+      <>
       <NavbarComponent />
-
-      <Row noGutters>
-        <Col xs="auto">
-          <Sidebar />
-        </Col>
-        <Col>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-
-            <Route path="/about" element={<About />} />
-
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </Col>
-      </Row>
-
-      <Footer />
-    </>
-  );
+      <DataTabel/>
+      </>
+    );
+  }
 }
 
-export default App;
+
