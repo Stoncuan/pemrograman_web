@@ -1,36 +1,77 @@
-import React from "react";
+import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import axios from "axios";
+import { API_URL } from "./utils/constant.js";
 
-export default function MahasiswaTable() {
-  const data = [
-    { id: 1, nama: "Andi", jurusan: "Informatika", angkatan: 2022 },
-    { id: 2, nama: "Budi", jurusan: "Sistem Informasi", angkatan: 2021 },
-    { id: 3, nama: "Citra", jurusan: "Teknik Komputer", angkatan: 2023 },
-  ];
+// import data icon yang ada di react icon
+import {} from "react-icons/fa"
 
-  return (
-    <div className="container mt-4">
-      <h3 className="mb-3">List Data</h3>
-      <Table striped bordered hover responsive>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Daftar Kategori</th>
-            <th></th>
-            <th>Hasil</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((mhs) => (
-            <tr key={mhs.id}>
-              <td> 1</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
+const Icon = ({}) => {
+  if(nama === "Makanan") return <FaUtensils className="mr-2"/>
+  if(nama === "Minuman") return <FaUtensils className="mr-2"/>
+  if(nama === "Cemilan") return <FaUtensils className="mr-2"/>
+}
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menus: [],
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(API_URL + "products")
+      .then((res) => {
+        const menus = res.data;
+        this.setState({ menus });
+      })
+      .catch((error) => {
+        console.log("Error yaa", error);
+      });
+    
+  }
+
+  render() {
+    const { menus } = this.state;
+    
+
+    console.log(kategori);
+
+    return (
+      <div className="container mt-4">
+        <h3 className="mb-3">List Data Produk</h3>
+        <Table striped bordered hover responsive>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama Produk</th>
+              <th>Kategori</th>
+              <th>Harga</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </div>
-  );
+          </thead>
+          <tbody>
+            {menus.length > 0 ? (
+              menus.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.nama}</td>
+                  <td>{item.kategori?.nama || "-"}</td>
+                  <td>{item.harga}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="text-center">
+                  Loading data...
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
+      </div>
+    );
+  }
 }

@@ -26,7 +26,6 @@ export default class App extends Component {
 
       ],
     }
-
   }
 
   componentDidMount(){
@@ -38,8 +37,7 @@ export default class App extends Component {
     })
     .catch(error => {
       console.log("Error yaa", error);
-    })
-  }
+    })  }
 
 
   render() {
