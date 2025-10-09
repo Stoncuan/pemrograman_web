@@ -4,13 +4,7 @@ import axios from "axios";
 import { API_URL } from "./utils/constant.js";
 
 // import data icon yang ada di react icon
-import {} from "react-icons/fa"
-
-const Icon = ({}) => {
-  if(nama === "Makanan") return <FaUtensils className="mr-2"/>
-  if(nama === "Minuman") return <FaUtensils className="mr-2"/>
-  if(nama === "Cemilan") return <FaUtensils className="mr-2"/>
-}
+import {} from "react-icons/fa";
 
 export default class App extends Component {
   constructor(props) {
@@ -18,6 +12,7 @@ export default class App extends Component {
 
     this.state = {
       menus: [],
+      categories: [],
     };
   }
 
@@ -31,24 +26,35 @@ export default class App extends Component {
       .catch((error) => {
         console.log("Error yaa", error);
       });
-    
+
+    axios
+      .get(API_URL + "categories")
+      .then((res) => {
+        const categories = res.data;
+        this.setState({ categories });
+      })
+      .catch((error) => {
+        console.log("Error yaa", error);
+      });
   }
 
   render() {
-    const { menus } = this.state;
-    
-
-    console.log(kategori);
+    const { menus, categories } = this.state;
 
     return (
       <div className="container mt-4">
+        <div>
+          {categories.map((kategori) => (
+            <button key={kategori.id}>{kategori.nama}</button>
+          ))}
+        </div>
         <h3 className="mb-3">List Data Produk</h3>
         <Table striped bordered hover responsive>
           <thead>
             <tr>
               <th>ID</th>
               <th>Nama Produk</th>
-              <th>Kategori</th>
+              <th>Gambar</th>
               <th>Harga</th>
             </tr>
           </thead>
@@ -58,7 +64,15 @@ export default class App extends Component {
                 <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.nama}</td>
-                  <td>{item.kategori?.nama || "-"}</td>
+                  <td>
+                    <img
+                      src={`/images/${item.gambar}`}
+                      alt={item.nama}
+                      width="80"
+                      height="80"
+                      style={{ objectFit: "cover", borderRadius: "8px" }}
+                    />
+                  </td>
                   <td>{item.harga}</td>
                 </tr>
               ))

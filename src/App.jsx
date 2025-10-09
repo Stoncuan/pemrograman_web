@@ -18,30 +18,30 @@ import {API_URL} from "./utils/constant.js";
 import axios from "axios";
 
 export default class App extends Component {
-  constructor(props){
-    super(props)
+  // constructor(props){
+  //   super(props)
 
-    this.state = {
-      menus: [
+  //   this.state = {
+  //     menus: [
 
-      ],
-    }
-  }
+  //     ],
+  //   }
+  // }
 
-  componentDidMount(){
-    // tangkap data
-    axios.get(API_URL+"products")
-    .then(res => {
-      const menus = res.data;
-      this.setState({menus});
-    })
-    .catch(error => {
-      console.log("Error yaa", error);
-    })  }
+  // componentDidMount(){
+  //   // tangkap data
+  //   axios.get(API_URL+"products")
+  //   .then(res => {
+  //     const menus = res.data;
+  //     this.setState({menus});
+  //   })
+  //   .catch(error => {
+  //     console.log("Error yaa", error);
+  //   })  }
 
 
   render() {
-    console.log(this.state.menus);
+    
     return(
       <>
       <NavbarComponent />
